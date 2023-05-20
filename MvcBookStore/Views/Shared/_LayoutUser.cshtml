@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CBA Shop</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <title>@ViewBag.Title</title>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/Content/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-secondary py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark" href="">Câu hỏi thường gặp ?</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Trợ giúp</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Hỗ trợ</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark px-2" href="https://www.facebook.com/huynhvo.tuanlinh.353/">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-dark pl-2" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-info font-weight-bold border px-3 mr-1">CBA</span>Shop</h1>
+                </a>
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                @using (Html.BeginForm("Search", "BookStore"))
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" value="@ViewBag.keyWord" placeholder="Tìm kiếm . . .">
+                        <button class="btn btn-outline-success"><i class="fa fa-search"></i></button>
+                    </div>
+                }
+            </div>
+            <div class="col-lg-3 col-6 text-right">
+                <a href="" class="btn border">
+                    <i class="fas fa-heart text-info"></i>
+                    <span class="badge">0</span>
+                </a>
+                @Html.Action("GiohangPartial", "Giohang")
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-info text-white w-100" data-toggle="collapse" href="" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    <h6 class="m-0">Chủ đề</h6>
+                </a>
+                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 250px">
+                        <div style="color:black">
+                            @Html.Action("Chude", "Bookstore")
+                        </div>
+                    </div>
+                </nav>
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-info text-white w-100" data-toggle="collapse" href="" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    <h6 class="m-0">Nhà xuất bản</h6>
+                </a>
+                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 250px">
+                        <div>
+                            @Html.Action("Nhaxuatban", "Bookstore")
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-info font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="@Url.Action("Index", "Bookstore")" class="nav-item nav-link active text-info">Trang chủ</a>
+                            <a href="@Url.Action("IndexShop", "Shop")" class="nav-item nav-link text-dark">Sách</a>
+                            <a href="detail.html" class="nav-item nav-link text-dark">Giới thiệu</a>
+                            <a href="contact.html" class="nav-item nav-link text-dark">Liên hệ</a>
+                        </div>
+                        @if (Session["Taikhoan"] != null)
+                        {
+                            <div class="nav-item dropdown">
+                                <button type="button" href="#" class="nav-link btn btn-primary text-white" data-toggle="dropdown" style="border: 1px solid; border-radius:5px">@Session["User"] 
+                                    <i class="fa fa-angle-down float-right mt-1" style="margin-left: 3px"></i></button>
+                                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                    <a href="" class="dropdown-item">Thông tin</a>
+                                    <a href="@Url.Action("Dangxuat", "Giohang")" class="dropdown-item">Đăng xuất</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="login">
+                                <a href="/Nguoidung/Dangnhap">Đăng nhập |</a>
+                                <a href="/Nguoidung/Dangky">Đăng ký</a>
+                            </div>
+                        }
+                    </div>
+                </nav>
+                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="height: 410px;">
+                            <img class="img-fluid" src="~/img/slider1.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-item" style="height: 410px;">
+                            <img class="img-fluid" src="~/img/slider2.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-item" style="height: 410px;">
+                            <img class="img-fluid" src="~/img/slider3.jpg" alt="Image">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-prev-icon mb-n2"></span>
+                        </div>
+                    </a>
+                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-next-icon mb-n2"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+    <!-- Featured Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-check text-info m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Chất lượng</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-shipping-fast text-info m-0 mr-2"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Miễn phí giao hàng</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fas fa-exchange-alt text-info m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">10 ngày Đổi Trả</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-phone-volume text-info m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Hỗ trợ 24/7</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Featured End -->
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a href="" class="text-decoration-none">
+                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-info font-weight-bold border border-white px-3 mr-1">CBA</span>Shop</h1>
+                </a>
+                <p>CBA Shop nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả Hệ Thống CBA Shop trên toàn quốc.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-info mr-3"></i>26M, Miếu nổi, quận Phú Nhuận, TP.HCM</p>
+                <p class="mb-2"><i class="fa fa-envelope text-info mr-3"></i>0950080128@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-info mr-3"></i>+84 911 929308</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Liên kết nhanh</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="@Url.Action("Index", "Bookstore")"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
+                            <a class="text-dark mb-2" href="@Url.Action("IndexShop", "Shop")"><i class="fa fa-angle-right mr-2"></i>Sách</a>
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Giới thiệu</a>
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Giỏ hàng</a>
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Thanh toán</a>
+                            <a class="text-dark" href="#"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Đóng góp</h5>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0 py-4" placeholder="Tên của bạn" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control border-0 py-4" placeholder="Email của bạn"
+                                       required="required" />
+                            </div>
+                            <div>
+                                <button class="btn btn-info btn-block border-0 py-3" type="submit">Theo dõi ngay!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top border-light mx-xl-5 py-4">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-dark">
+                    &copy; <a class="text-dark font-weight-semi-bold" href="#">CBA Shop</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-dark font-weight-semi-bold" href="https://www.facebook.com/huynhvo.tuanlinh.353/">Tuấn Linh</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="~/img/payments.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-info back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/lib/easing/easing.min.js"></script>
+    <script src="~/Content/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="~/Content/mail/jqBootstrapValidation.min.js"></script>
+    <script src="~/Content/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/Content/js/main.js"></script>
+</body>
+
+</html>

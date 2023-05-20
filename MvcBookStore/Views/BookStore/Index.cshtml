@@ -1,0 +1,62 @@
+﻿
+@using MvcBookStore.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Danh sách sản phẩm</span></h2>
+    </div>
+    <div class="row px-xl-5 pb-3">
+        @foreach (var sach in Model)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="card product-item border-0 mb-4">
+                    <a href="@Url.Action("Details", "BookStore", new { id = sach.Masach})">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="img-fluid w-100" src="~/img/@sach.Anhbia" alt="@sach.Tensach">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                            <h6 class="text-truncate mb-3">@sach.Tensach</h6>
+                            <div class="d-flex justify-content-center">
+                                <h6>@sach.Giaban đ</h6><h6 class="text-muted ml-2"><del>150000đ</del></h6>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            <a href="@Url.Action("Details", "BookStore", new { id = sach.Masach})" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-info mr-1"></i>Xem chi tiết</a>
+                            <a href="@Url.Action("Themgiohang", "Giohang", new { @iMasach = sach.Masach, @strURL=Request.Url.ToString()})" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-info mr-1"></i>Thêm vào giỏ</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@* Tao lien ket cac trang *@
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount;
+<div class="Menutrang">
+    @Html.PagedListPager(Model,page=>Url.Action("Index", new { page = page}))
+</div>
+<style>
+    .Menutrang{
+        display:flex;
+        justify-content: center;
+    }
+    .Menutrang li{
+        display: inline;
+        border: 1px solid;
+        padding: 5px 15px;
+        border-radius:5px;
+        margin: 2px;
+    }
+    .Menutrang li.active {
+        background-color: #64a5de;
+        color: white;
+        border: 1px solid #64a5de;
+    }
+</style>
